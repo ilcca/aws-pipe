@@ -31,10 +31,9 @@ jobs:
 
     # Optional: Upload to S3 if you have AWS credentials
     - name: Upload model to S3
-      if: ${{ secrets.AWS_KEY && secrets.AWS_SECRET }}
       run: |
         pip install awscli
-        aws s3 cp model/model.pkl s3://YOUR_BUCKET/model.pkl
+        aws s3 cp model/model.pkl s3://aws-pipe-models/model.pkl
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET }}
